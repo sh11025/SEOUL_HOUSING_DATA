@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>서울 주거 데이터 스토리</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="story-home">
+<header class="pill-header">
+  <div class="pill-nav-shell">
+    <nav class="pill-nav" aria-label="주요 메뉴"><a class="pill-link active" href="index.html">개요</a><a class="pill-link" href="vacancy.html">빈집 현황</a><a class="pill-link" href="market.html">임대차 시장</a><a class="pill-link" href="population.html">인구 이동</a><a class="pill-link" href="forecast.html">2026 AI 예측</a><a class="pill-link" href="district.html">우리 동네</a></nav>
+  </div>
+</header>
+
+<main>
+  <section id="story-section-1" class="story-hero">
+    <div class="wrap story-hero-grid">
+      <div class="story-hero-copy reveal">
+        <div class="eyebrow">SEOUL HOUSING DATA · 2023—2026</div>
+        <h1>서울의 집은<br>어떻게 움직이고 있을까?</h1>
+        <p class="lead">집의 변화는 숫자 하나로 설명되지 않습니다. 사람의 이동, 임대차 거래, 생활인구, 금리와 빈집을 함께 보고 다음 달 시장까지 예측했습니다.</p>
+        <a class="story-button" href="#story">데이터 이야기 시작하기 <span>↓</span></a>
+      </div>
+
+      <div class="hero-art hero-art-home reveal" aria-hidden="true">
+        <img src="assets/images/home-hero.webp" alt="">
+        <span class="art-chip chip-a">25개 자치구</span>
+        <span class="art-chip chip-b">36개월 데이터</span>
+        <span class="art-pin pin-a"></span>
+        <span class="art-pin pin-b"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="story-flow section">
+    <div class="wrap">
+      <div class="story-intro reveal">
+        <div class="eyebrow">ONE CITY, FOUR SIGNALS</div>
+        <h2>서울의 주거 시장을<br>네 가지 흐름으로 읽습니다.</h2>
+        <p>결과부터 보여주기보다, 어떤 데이터를 왜 함께 봤는지 먼저 소개합니다.</p>
+      </div>
+
+      <div class="story-steps">
+        <article class="story-step reveal">
+          <div class="step-visual people-visual">
+            <span></span><span></span><span></span><span></span><span></span>
+            <b class="moving-person"></b>
+          </div>
+          <div class="step-copy"><span>01 · PEOPLE</span><h3>사람은 이동합니다.</h3><p>전입과 전출, 순이동을 통해 사람들이 어느 지역으로 들어오고 나가는지 살펴봅니다.</p></div>
+        </article>
+
+        <article class="story-step reverse reveal">
+          <div class="step-visual trade-visual">
+            <svg viewBox="0 0 320 150" aria-hidden="true">
+              <path class="spark-path" d="M10 120 C45 105 58 55 95 78 S155 120 180 72 S230 28 310 45"/>
+              <circle class="spark-dot" cx="310" cy="45" r="7"/>
+            </svg>
+          </div>
+          <div class="step-copy"><span>02 · RENTAL MARKET</span><h3>거래는 계속 움직입니다.</h3><p>2023–2025년 월별 임대차 계약을 통해 각 자치구의 시장 흐름과 변화를 확인합니다.</p></div>
+        </article>
+
+        <article class="story-step reveal">
+          <div class="step-visual vacancy-visual">
+            <div class="mini-building">
+              <i></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i>
+              <i></i><i></i><i></i><i class="off"></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="step-copy"><span>03 · VACANCY</span><h3>비어 있는 집도 달라집니다.</h3><p>실제 빈집 통계로 지역별 규모와 2023–2025년 변화를 별도로 분석했습니다.</p></div>
+        </article>
+
+        <article class="story-step reverse reveal">
+          <div class="step-visual predict-visual">
+            <div class="predict-point actual"><b></b><span>2025.12</span></div>
+            <div class="predict-arrow"><i></i></div>
+            <div class="predict-point future"><b></b><span>2026.01</span></div>
+          </div>
+          <div class="step-copy"><span>04 · AI FORECAST</span><h3>그리고 다음 달을 예측합니다.</h3><p>과거 데이터로 모델을 검증한 뒤, 사용 가능한 2023–2025 데이터를 활용해 2026년 1월 거래량을 예측했습니다.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section story-preview">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">A QUICK PREVIEW</div><h2>상세 분석 전에<br>흐름만 먼저 볼까요?</h2></div>
+        <p>홈에서는 핵심 신호만 짧게 보여줍니다. 정확한 자치구별 수치와 전체 그래프는 각 상세 페이지에서 확인할 수 있습니다.</p>
+      </div>
+      <div class="preview-grid">
+        <a href="vacancy.html" class="preview-card reveal">
+          <span class="num">VACANCY · 2023—2025</span>
+          <h3>서울 빈집의 변화</h3>
+          <div id="vacancy-mini" class="mini-bars"></div>
+          <p>연도별 서울 전체 빈집 수</p>
+        </a>
+        <a href="market.html" class="preview-card reveal">
+          <span class="num">RENTAL MARKET</span>
+          <h3>월별 거래의 흐름</h3>
+          <svg class="mini-line" viewBox="0 0 320 110"><path d="M5 85 C35 78 50 35 85 48 S130 86 160 60 S210 24 245 43 S285 70 315 25"/></svg>
+          <p>자치구별 상세 흐름은 임대차 페이지에서</p>
+        </a>
+        <a href="forecast.html" class="preview-card dark-preview reveal">
+          <span class="num">AI FORECAST · 2026.01</span>
+          <h3>실제에서 예측으로</h3>
+          <div class="mini-predict"><i></i><span></span><b></b></div>
+          <p>서울 25개 자치구의 다음 달 거래량 예측</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dataset" class="section story-numbers">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">THE DATASET</div><h2>이 이야기를 만든<br>데이터의 범위</h2></div>
+      </div>
+      <div id="home-stats" class="stats reveal"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><div class="eyebrow">EXPLORE SEOUL</div><h2>이제 궁금한 이야기를<br>더 깊게 살펴보세요.</h2></div>
+        <p>각 페이지에서는 실제 JSON 데이터를 이용해 자치구별 결과와 상세 분석을 제공합니다.</p>
+      </div>
+      <div class="grid">
+        <a class="card reveal" href="vacancy.html"><span class="num">01 · VACANCY</span><div><h3>서울에는 어디에 빈집이 많을까?</h3><p>2023–2025 빈집 변화와 자치구별 현황</p></div><span class="arrow">↗</span></a>
+        <a class="card reveal" href="market.html"><span class="num">02 · RENTAL MARKET</span><div><h3>우리 동네 거래는 어떻게 움직였을까?</h3><p>월별 임대차 거래와 시장 흐름</p></div><span class="arrow">↗</span></a>
+        <a class="card reveal" href="population.html"><span class="num">03 · POPULATION</span><div><h3>사람들은 어디로 이동하고 있을까?</h3><p>전입·전출·순이동과 생활인구</p></div><span class="arrow">↗</span></a>
+        <a class="card reveal" href="forecast.html"><span class="num">04 · AI FORECAST</span><div><h3>2026년 1월 거래량은 어떻게 될까?</h3><p>머신러닝 기반 자치구별 다음 달 예측</p></div><span class="arrow">↗</span></a>
+        <a class="card reveal" href="district.html"><span class="num">05 · DISTRICT</span><div><h3>내가 사는 자치구는 어떨까?</h3><p>우리 동네의 핵심 지표를 한눈에 비교</p></div><span class="arrow">↗</span></a>
+      </div>
+      <div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>서울의 주거 데이터를 빈집·인구 이동·임대차 거래·AI 예측 순서로 살펴보세요.</div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">국토교통부 · KOSIS · 한국은행 ECOS · 서울 열린데이터광장 · 서울특별시 빈집 통계<br>AI 예측값은 실제 미래 거래량을 보장하지 않습니다.</div></footer>
+<script src="app.js"></script>
+</body>
+</html>

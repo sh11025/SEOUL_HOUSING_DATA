@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>서울 임대차 시장 | Seoul Housing Data</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="market-detail.css">
+</head>
+
+<body>
+  <header class="pill-header">
+    <div class="pill-nav-shell">
+      <nav class="pill-nav" aria-label="주요 메뉴">
+        <a class="pill-link" href="index.html">개요</a>
+        <a class="pill-link" href="vacancy.html">빈집 현황</a>
+        <a class="pill-link active" href="market.html">임대차 시장</a>
+        <a class="pill-link" href="population.html">인구 이동</a>
+        <a class="pill-link" href="forecast.html">2026 AI 예측</a>
+        <a class="pill-link" href="district.html">우리 동네</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="market-detail-page">
+    <section id="story-section-1" class="detail-hero">
+    <div class="wrap detail-hero-grid">
+      <div class="detail-hero-copy reveal">
+        <div class="eyebrow">02 · RENTAL MARKET</div>
+        <h1>서울의 임대차 거래는<br>어떻게 움직였을까?</h1>
+        <p class="lead">2023–2025년 서울 25개 자치구의 월별 아파트 전월세 계약 건수를 통해 시장의 흐름과 지역별 차이를 살펴봅니다.</p>
+        <div id="market-kpis" class="detail-kpis"></div>
+      </div>
+      <div class="hero-art hero-market reveal"><img src="assets/images/market-hero.webp" alt="서울 임대차 거래의 흐름을 표현한 도시 풍경"></div>
+    </div>
+  </section>
+
+    <section class="section soft-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">MONTHLY TREND</div>
+            <h2>우리 동네 거래는<br>어떻게 변했을까?</h2>
+          </div>
+          <p>왼쪽 그래프에서 월별 거래 흐름을 보고, 오른쪽 서울 자치구 선택 지도에서 다른 지역을 바로 골라보세요.</p>
+        </div>
+        <div class="market-trend-layout">
+          <div class="viz-panel market-trend-panel">
+            <div id="market-line" class="market-line-chart"></div>
+          </div>
+          <aside class="market-map-control viz-panel">
+            <div class="map-control-head"><span>자치구 선택</span><b id="market-selected-gu">강남구</b></div>
+            <div id="market-district-map" class="district-map compact-map" aria-label="서울 자치구 선택용 도식 지도"></div>
+            <small>※ 실제 행정경계가 아닌 선택용 도식 지도입니다.</small>
+            <select id="market-gu" class="visually-hidden" aria-label="자치구 선택"></select>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">2025 DISTRICTS</div>
+            <h2>2025년 거래가 활발했던<br>자치구는 어디일까?</h2>
+          </div>
+          <p>2025년 12개월의 계약 건수를 자치구별로 합산해 비교합니다.</p>
+        </div>
+        <div class="ranking-layout">
+          <div class="viz-panel">
+            <div id="market-ranking" class="ranking-chart"></div>
+          </div>
+          <aside id="market-insight" class="insight-panel"></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">MONTHLY PATTERN</div>
+            <h2>월에 따라 거래량은<br>어떻게 달라졌을까?</h2>
+          </div>
+          <p>2023–2025년 서울 전체 자치구-월 계약 건수를 월별로 합산해 흐름을 비교합니다.</p>
+        </div>
+        <div class="viz-panel">
+          <div id="market-month-bars" class="market-month-bars"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">DATA EXPLORER</div>
+            <h2>월별 데이터를<br>직접 확인해보세요.</h2>
+          </div>
+          <div class="table-tools market-filter-tools">
+            <label>연도<select id="market-filter-year"><option value="all">전체</option><option>2023</option><option>2024</option><option selected>2025</option></select></label>
+            <label>월<select id="market-filter-month"><option value="all">전체</option></select></label>
+            <label>자치구<select id="market-filter-gu"><option value="all">전체</option></select></label>
+          </div>
+        </div>
+        <div class="viz-panel table-wrap">
+          <div id="market-detail-table"></div>
+        </div>
+        <p class="data-note">※ 표기된 수치는 실제 빈집 수가 아니라 해당 월에 관측된 아파트 전월세 계약 건수입니다.</p>
+        <div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>월별 임대차 거래 건수는 시장 활동량을 보여주며, 빈집 수와 동일한 지표는 아닙니다.</div></div>
+      </div>
+    </section>
+</main>
+
+  <footer>
+    <div class="wrap">출처 · 국토교통부 실거래가 공개시스템<br>임대차 거래량은 시장 활동을 나타내는 지표이며 실제 빈집 수와는 다른 개념입니다.</div>
+  </footer>
+  <script src="app.js"></script>
+  <script src="market-detail.js"></script>
+</body>
+
+</html>

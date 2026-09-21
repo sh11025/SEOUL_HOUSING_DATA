@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026 AI 예측 | Seoul Housing Data</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="forecast-detail.css">
+</head>
+<body>
+<header class="pill-header"><div class="pill-nav-shell"><nav class="pill-nav">
+<a class="pill-link" href="index.html">개요</a>
+<a class="pill-link" href="vacancy.html">빈집 현황</a>
+<a class="pill-link" href="market.html">임대차 시장</a>
+<a class="pill-link" href="population.html">인구 이동</a>
+<a class="pill-link active" href="forecast.html">2026 AI 예측</a>
+<a class="pill-link" href="district.html">우리 동네</a>
+</nav></div></header>
+
+<main>
+<section id="story-section-1" class="detail-hero forecast-hero"><div class="wrap detail-hero-grid">
+<div class="detail-hero-copy reveal">
+<div class="eyebrow">04 · AI FORECAST</div>
+<h1>2026년 1월,<br>임대차 시장은 어떻게 움직일까?</h1>
+<p class="lead">2023–2025년 시장 데이터를 학습한 AI 머신러닝 예측 모델로 서울 25개 자치구의 2026년 1월 아파트 전월세 계약 건수를 예측했습니다.</p>
+<div id="forecast-kpis" class="detail-kpis"></div>
+
+</div>
+<div class="hero-art hero-forecast-art reveal"><img src="assets/images/forecast-hero.webp" alt="서울 주거 데이터를 AI로 예측하는 야간 도시 풍경"></div>
+</div></section>
+
+<section class="section soft-section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">ACTUAL → FORECAST</div>
+<h2>2025년 12월과<br>2026년 1월 예측 비교</h2></div>
+<p>막대의 왼쪽은 실제 2025년 12월 계약 건수, 오른쪽은 다음 달 AI 예측값입니다.</p></div>
+<div class="viz-panel">
+  <div class="chart-header">
+    <strong>자치구별 실제 vs 예측 비교</strong>
+    <div class="chart-legend">
+      <span class="chart-legend-item legend-blue">2025.12 실제</span>
+      <span class="chart-legend-item legend-navy">2026.01 예측</span>
+    </div>
+  </div>
+  <div id="forecast-ranking"></div>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head">
+  <div>
+    <div class="eyebrow">DISTRICT EXPLORER</div>
+    <h2>우리 동네의 예측을<br>직접 확인해보세요.</h2>
+  </div>
+  <select id="forecast-gu" class="visually-hidden" aria-label="자치구 선택"></select>
+</div>
+<div class="forecast-district-layout">
+  <div id="forecast-focus" class="forecast-focus"></div>
+  <aside class="market-map-control viz-panel">
+    <div class="map-control-head"><span>자치구 선택</span><b id="forecast-selected-gu">강남구</b></div>
+    <div id="forecast-district-map" class="district-map compact-map" aria-label="서울 자치구 선택용 도식 지도"></div>
+    <small>※ 지도에서 자치구를 클릭해 2026년 1월 AI 예측값을 바로 확인해보세요.</small>
+  </aside>
+</div>
+</div></section>
+
+<section class="section soft-section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">MODEL VALIDATION</div>
+<h2>예측 모델은<br>어떻게 검증했을까?</h2></div></div>
+<div class="model-cards">
+<div><span>학습 데이터</span><b>2023–2024</b><small>과거 2년간의 실제 거래 학습</small></div>
+<div><span>검증 기간</span><b>2025</b><small>이후 1년 데이터를 맞추며 테스트</small></div>
+<div><span>예측 정확도</span><b>88.9%</b><small>실제 데이터 흐름과의 일치도</small></div>
+<div><span>평균 오차</span><b>약 107건</b><small>실제 거래량과의 평균 차이</small></div>
+</div>
+<p class="data-note">※ 검증 후 최종 모델은 분석 가능한 전체 데이터를 다시 학습에 사용했으며, 2025년 12월까지의 시장 흐름을 바탕으로 2026년 1월을 예측했습니다.</p>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">FORECAST TABLE</div>
+<h2>25개 자치구<br>예측 데이터</h2></div></div>
+<div class="viz-panel table-wrap"><div id="forecast-table"></div></div>
+<p class="data-note">※ 이 결과는 2026년 전체 예측이 아니라 <b>2026년 1월 한 달</b>에 대한 예측입니다. 예측값은 실제 미래 결과를 보장하지 않습니다.</p>
+<div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>AI 예측값은 2025년 12월까지의 정보를 이용한 2026년 1월 임대차 거래 건수 예측입니다.</div></div>
+</div></section>
+</main>
+<footer><div class="wrap">AI 머신러닝 기반 2026년 1월 서울 자치구별 임대차 계약 건수 예측</div></footer>
+<script src="app.js"></script>
+<script src="forecast-detail.js"></script>
+</body></html>

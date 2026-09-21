@@ -1,0 +1,7 @@
+
+/* MARKET DETAIL */
+.market-line-chart{min-height:390px}.line-chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.line-chart-title strong{font-size:24px}.line-chart-title span{color:var(--muted);font-size:13px}
+.market-line-chart svg{width:100%;height:340px;overflow:visible}.chart-axis{stroke:#dcd7cf;stroke-width:1}
+.market-dots circle{fill:var(--orange);stroke:white;stroke-width:3;cursor:pointer}.market-labels text{font-family:Paperlogy,sans-serif;font-size:11px;fill:#8a8e96}
+@media(max-width:800px){.market-line-chart svg{height:280px}}
+.market-line-chart circle{fill:var(--orange);stroke:#fff;stroke-width:3}

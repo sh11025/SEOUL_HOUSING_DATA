@@ -1,0 +1,10 @@
+.net-row{display:grid;grid-template-columns:80px 1fr 90px;gap:15px;align-items:center;margin:14px 0;font-size:13px}
+.net-axis{height:12px;position:relative;background:linear-gradient(90deg,#f0eee9 49.7%,#ccc 50%,#f0eee9 50.3%);border-radius:999px}
+.net-axis i{position:absolute;height:8px;top:2px;border-radius:999px;width:var(--bar, 0%);transition:width .4s ease}
+.net-axis .plus{left:50%;background:var(--orange)}
+.net-axis .minus{right:50%;background:var(--blue)}
+.net-row b{text-align:right}
+.up,.pop-plus{color:#d84a19!important;font-weight:700}
+.down,.pop-minus{color:#2563eb!important;font-weight:700}
+#pop-gu{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 18px;font:inherit}
+@media(max-width:700px){.net-row{grid-template-columns:65px 1fr 75px}}

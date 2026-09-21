@@ -1,0 +1,26 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>우리 동네 | Seoul Housing Data</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="district-detail.css"></head><body>
+<header class="pill-header"><div class="pill-nav-shell"><nav class="pill-nav"><a class="pill-link" href="index.html">개요</a><a class="pill-link" href="vacancy.html">빈집 현황</a><a class="pill-link" href="market.html">임대차 시장</a><a class="pill-link" href="population.html">인구 이동</a><a class="pill-link" href="forecast.html">2026 AI 예측</a><a class="pill-link active" href="district.html">우리 동네</a></nav></div></header>
+<main><section id="story-section-1" class="detail-hero"><div class="wrap detail-hero-grid">
+<div class="detail-hero-copy reveal">
+  <div class="eyebrow">05 · MY DISTRICT</div>
+  <h1>우리 동네는<br>어떤 모습일까?</h1>
+  <p class="lead">자치구를 선택하면 빈집, 임대차 거래, 인구 이동, 생활인구와 2026년 1월 AI 예측을 한 화면에서 확인할 수 있습니다.</p>
+  <div class="district-picker">
+    <div id="district-map" class="district-map hero-district-map" aria-label="서울 자치구 선택용 도식 지도"></div>
+    <select id="district-gu" class="visually-hidden" aria-label="자치구 선택"></select>
+  </div>
+</div>
+<div class="hero-art hero-district reveal"><img src="assets/images/district-hero.webp" alt="서울의 동네를 선택해 탐색하는 지도 풍경"></div>
+</div></section>
+<section class="section soft-section"><div class="wrap">
+<div class="section-head">
+  <div><div class="eyebrow">SELECTED DISTRICT</div><h2 id="district-title">선택 자치구 핵심 지표</h2></div>
+  <p>지도나 검색창에서 자치구를 선택하면 해당 지역의 핵심 통계가 즉시 업데이트됩니다.</p>
+</div>
+<div id="district-kpis" class="district-kpis"></div>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">36 MONTHS · CONTRACT COUNT</div><h2>월별 임대차 계약 건수 흐름</h2><p class="chart-explain">2023.01–2025.12 · 세로축은 월별 계약 건수(건), 가로축은 시점입니다.</p></div></div><div class="viz-panel"><div id="district-trend"></div></div></div></section>
+<section class="section soft-section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">2023 → 2025</div><h2>빈집은 어떻게 변했을까?</h2></div></div><div id="district-vacancy" class="district-vacancy"></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">AI FORECAST</div><h2>2026년 1월 임대차 거래 예측</h2></div></div><div id="district-forecast" class="district-forecast"></div><p class="data-note">※ 2026년 전체가 아니라 2026년 1월 한 달의 예측입니다.</p><div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>선택한 자치구의 빈집·임대차·인구 이동·2026년 1월 예측을 함께 비교할 수 있습니다.</div></div></div></section>
+</main>
+<footer><div class="wrap">서울 25개 자치구 통합 데이터 탐색</div></footer><script src="app.js"></script><script src="district-detail.js"></script></body></html>

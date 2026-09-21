@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>서울 인구 이동 | Seoul Housing Data</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="population-detail.css">
+</head>
+<body>
+<header class="pill-header"><div class="pill-nav-shell"><nav class="pill-nav">
+<a class="pill-link" href="index.html">개요</a><a class="pill-link" href="vacancy.html">빈집 현황</a>
+<a class="pill-link" href="market.html">임대차 시장</a><a class="pill-link active" href="population.html">인구 이동</a>
+<a class="pill-link" href="forecast.html">2026 AI 예측</a><a class="pill-link" href="district.html">우리 동네</a></nav></div></header>
+<main>
+<section id="story-section-1" class="detail-hero"><div class="wrap detail-hero-grid">
+<div class="detail-hero-copy reveal"><div class="eyebrow">03 · POPULATION FLOW</div>
+<h1>사람들은 서울 안에서<br>어떻게 이동했을까?</h1>
+<p class="lead">2023–2025년 자치구별 전입·전출·순이동과 생활인구를 임대차 시장 데이터와 함께 살펴봅니다.</p>
+<div id="pop-kpis" class="detail-kpis"></div>
+</div>
+<div class="hero-art hero-population reveal"><img src="assets/images/population-hero.webp" alt="서울 자치구 사이 이동 흐름을 표현한 도시 지도"></div>
+</div></section>
+
+<section class="section soft-section"><div class="wrap"><div class="section-head">
+<div><div class="eyebrow">DISTRICT FLOW</div><h2>자치구별 인구 이동 흐름</h2></div>
+<div class="population-filter"><span>보고 싶은 자치구</span><select id="pop-gu"></select></div></div>
+<div class="viz-panel population-line-panel">
+  <div class="chart-legend"><span><i class="legend-in"></i>전입</span><span><i class="legend-out"></i>전출</span><small>단위 · 명 / 월</small></div>
+  <div id="pop-flow" class="population-line-chart"></div>
+</div></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head">
+<div><div class="eyebrow">NET MIGRATION · 2025</div><h2>전입과 전출의 차이는<br>어디에서 컸을까?</h2></div>
+<p>순이동은 전입 인원에서 전출 인원을 뺀 값입니다.</p></div>
+<div class="viz-panel"><div id="net-ranking"></div></div></div></section>
+
+<section class="section soft-section"><div class="wrap"><div class="section-head">
+<div><div class="eyebrow">LIVING POPULATION</div><h2>생활인구와 임대차 거래를<br>함께 비교해보세요.</h2></div></div>
+<div class="viz-panel table-wrap"><div id="living-table"></div></div>
+<p class="data-note">※ 인구 이동은 임대차 거래에 영향을 줄 수 있는 설명 변수이며, 전출 인원을 빈집 수로 해석할 수 없습니다.</p>
+<div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>전입·전출과 순이동은 임대차 시장을 설명하는 특성 중 하나이며 빈집 발생 자체를 뜻하지 않습니다.</div></div>
+</div></section>
+</main>
+<footer><div class="wrap">출처 · KOSIS 국내인구이동통계 · 서울 생활인구</div></footer>
+<script src="app.js"></script><script src="population-detail.js"></script>
+</body></html>

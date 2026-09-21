@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>서울 빈집 현황 | Seoul Housing Data</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="pill-header">
+  <div class="pill-nav-shell">
+    <nav class="pill-nav" aria-label="주요 메뉴">
+      <a class="pill-link" href="index.html">개요</a>
+      <a class="pill-link active" href="vacancy.html">빈집 현황</a>
+      <a class="pill-link" href="market.html">임대차 시장</a>
+      <a class="pill-link" href="population.html">인구 이동</a>
+      <a class="pill-link" href="forecast.html">2026 AI 예측</a>
+      <a class="pill-link" href="district.html">우리 동네</a>
+    </nav>
+  </div>
+</header>
+
+<main class="vacancy-page">
+  <section id="story-section-1" class="detail-hero">
+    <div class="wrap detail-hero-grid">
+      <div class="detail-hero-copy reveal">
+      <div class="eyebrow">01 · VACANCY STORY</div>
+      <h1>서울의 빈집은<br>어디에 몰려 있을까?</h1>
+      <p class="lead">2023–2025년 서울 25개 자치구의 실제 미거주 주택 통계를 통해 빈집의 규모, 변화, 주택 유형을 살펴봅니다.</p>
+      <div id="vacancy-kpis" class="detail-kpis"></div>
+      </div>
+      <div class="hero-art hero-vacancy reveal"><img src="assets/images/vacancy-hero.webp" alt="빈집을 지도처럼 둘러보는 서울 주거 풍경"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">SEOUL TREND</div><h2>서울 전체 빈집은<br>어떻게 변했을까?</h2></div>
+        <p>세 개 연도의 서울 전체 빈집 수를 비교합니다. 막대에 마우스를 올리면 정확한 수치를 확인할 수 있습니다.</p>
+      </div>
+      <div class="viz-panel">
+        <div id="vacancy-year-chart" class="year-bars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">DISTRICT RANKING</div><h2>2025년, 어느 자치구에<br>빈집이 많았을까?</h2></div>
+        <div class="year-switch">
+          <button data-year="2023">2023</button>
+          <button data-year="2024">2024</button>
+          <button data-year="2025" class="active">2025</button>
+        </div>
+      </div>
+      <div class="ranking-layout">
+        <div class="viz-panel"><div id="vacancy-ranking" class="ranking-chart"></div></div>
+        <aside id="vacancy-insight" class="insight-panel"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">YEAR-OVER-YEAR</div><h2>1년 사이 빈집은<br>어디서 늘고 줄었을까?</h2></div>
+        <div class="year-switch" id="vacancy-diff-switch" style="display:flex;gap:4px;">
+          <button type="button" data-diff="2023-2024">2023 → 2024년</button>
+          <button type="button" class="active" data-diff="2024-2025">2024 → 2025년</button>
+        </div>
+      </div>
+      <p id="vacancy-diff-desc" style="margin-top:-6px;margin-bottom:20px;color:var(--muted);font-size:14px;">2024년 대비 2025년으로 변화한 빈집 수를 자치구별로 비교합니다.</p>
+      <div class="viz-panel"><div id="vacancy-change" class="change-chart"></div></div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">HOUSING TYPE</div><h2>어떤 주택에서<br>빈집이 나타났을까?</h2></div>
+        <p>단독주택, 아파트, 연립주택, 다세대주택, 비주거용 건물 내 주택의 구성 비중을 비교합니다.</p>
+      </div>
+      <div class="type-grid">
+        <div class="viz-panel"><div id="vacancy-type-bars"></div></div>
+        <div id="vacancy-type-cards" class="type-cards"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div><div class="eyebrow">DATA EXPLORER · 2025년 기준</div><h2>자치구별 빈집 현황<br><span style="font-size:0.62em;font-weight:600;color:var(--muted);">(2025년 기준)</span></h2></div>
+        <div class="table-tools" style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:13px;color:var(--muted);white-space:nowrap;">기준 연도: <strong>2025년</strong></span>
+          <input id="vacancy-search" type="search" placeholder="자치구 검색">
+        </div>
+      </div>
+      <div class="viz-panel table-wrap"><div id="vacancy-detail-table"></div></div>
+      <p class="data-note">※ 2025년 기준 통계이며, 이 페이지의 값은 ‘빈집 수’이고 ‘공실률’이 아닙니다. 자치구 규모가 다르므로 빈집 수만으로 지역의 주거 상태를 단정할 수 없습니다.</p>
+      <div class="insight-card site-insight-card reveal"><div><b>데이터 읽기</b><br>빈집 수는 주택 재고 규모의 영향을 받으므로 자치구 간 비교 시 규모 차이도 함께 보는 것이 좋습니다.</div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">출처 · 서울특별시 빈집 통계 / 국가데이터처 주택총조사<br>본 페이지의 빈집 통계와 임대차 계약 건수는 서로 다른 지표입니다.</div></footer>
+<script src="app.js"></script>
+<script src="vacancy.js"></script>
+</body>
+</html>
