@@ -1,14 +1,32 @@
 # 서울 주거 데이터 스토리 (Seoul Housing Data Story)
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/scikit--learn-1.3%2B-F7931E?logo=scikit-learn&logoColor=white" alt="scikit-learn">
+  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Pandas-2.0%2B-150458?logo=pandas&logoColor=white" alt="Pandas">
+  <img src="https://img.shields.io/badge/Vanilla_JS-ES6%2B-F7DF1E?logo=javascript&logoColor=black" alt="Vanilla JS">
+  <img src="https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=githubpages&logoColor=white" alt="GitHub Pages">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+</p>
+
 ## 2023–2025 서울 임대차·인구 이동·빈집 분석과 2026년 1월 임대차 거래 예측
 
-> **서울의 집은 지금 어디로 움직이고 있을까?**  
+> **"서울의 집은 지금 어디로 움직이고 있을까?"**  
 > 2023–2025년 서울 25개 자치구의 아파트 전월세 실거래, 인구 이동, 생활인구, 기준금리, 빈집 통계를 통합하고,  
 > 머신러닝을 이용해 **2026년 1월 자치구별 임대차 거래 건수**를 예측한 엔드투엔드(End-to-End) 데이터 분석 & 인터랙티브 웹 시각화 프로젝트입니다.
 
 <p align="center">
-  <img src="docs/assets/images/home-hero.webp" alt="서울 주거 데이터 스토리" width="820">
+  <img src="docs/assets/slides/000.gif" alt="서울 주거 데이터 스토리" width="820">
 </p>
+
+---
+
+### 📊 Project Metrics at a Glance (핵심 지표 인포그래픽)
+
+| 📁 원천 실거래 데이터 | 🏙️ 분석 대상 자치구 | ⏱️ 시계열 분석 기간 | 🎯 최종 ML 모델 성능 | 🔮 미래 예측 목표 | 🌐 인터랙티브 웹 대시보드 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **812,501건**<br/><sub>국토부 전월세 실거래</sub> | **25개 전 자치구**<br/><sub>강남구 ~ 중랑구 전역</sub> | **36개월 (3년)**<br/><sub>2023.01 ~ 2025.12</sub> | **R² 0.8892 / MAE 106건**<br/><sub>Random Forest 앙상블</sub> | **2026년 1월**<br/><sub>25개 구 거래량 1개월 선행</sub> | **6개 전용 페이지**<br/><sub>GitHub Pages 즉시 탐색</sub> |
 
 ---
 
@@ -166,13 +184,31 @@
 주거 시장을 볼 때 흔히 "전출 인구가 많으면 빈집도 많아질 것"이라고 단순하게 추측하기 쉽습니다.  
 하지만 **전출 인구와 실제 빈집은 같은 지표가 아닙니다.**
 
+```mermaid
+flowchart TD
+    subgraph MISCONCEPTION ["❌ 일반적인 직관적 편견"]
+        M1["전출 인구 증가 ➡️ 빈집이 폭증할 것이다?"]
+        M2["임대차 거래량 감소 ➡️ 공실이 속출할 것이다?"]
+    end
+
+    subgraph REALITY ["✅ 실증 데이터로 검증한 실제 시장 메커니즘"]
+        R1["당일 전입·전출 동시 발생 시 ➡️ 공실 발생 0건 (주거 회전율 유지)"]
+        R2["거래 건수 감소의 본질 ➡️ 재계약·계약갱신청구권 사용 (거주 지속)"]
+        R3["서울 빈집의 실체 ➡️ 농어촌 폐가가 아닌 신축 입주대기·리모델링 공실 (아파트 54.2%)"]
+    end
+
+    subgraph SOLUTION ["🎯 본 프로젝트의 명확한 이원화 분석 체계"]
+        S1["【트랙 1: 임대차 시장 예측】<br/>인구이동·생활인구·금리를 결합하여 <b>다음 달 계약 건수</b> 정밀 예측"]
+        S2["【트랙 2: 빈집 심층 분석】<br/>통계청 주택총조사 기반 <b>실제 미거주 주택(빈집) 현황</b> 분리 규명"]
+    end
+
+    MISCONCEPTION --> REALITY
+    REALITY --> SOLUTION
+```
+
 1. **전출 인구 ≠ 새로 발생한 빈집**: 세입자가 다른 동네로 이사를 가도, 당일 새로운 세입자가 입주하면 빈집은 발생하지 않습니다.
 2. **거래 감소 ≠ 공실**: 전월세 거래 건수가 줄어든 것이 이사를 안 가고 살던 집에서 재계약을 맺었기 때문일 수 있습니다.
 3. **빈집의 본질**: 서울시 통계의 빈집은 농어촌의 '폐가'가 아니라 신축 입주 전 대기나 리모델링 등 일시적 공실이 대부분입니다.
-
-따라서 본 프로젝트에서는 두 과제를 명확히 분리했습니다:
-- **임대차 시장 예측**: 월별 계약 건수를 Target으로 두고 인구 이동, 생활인구, 기준금리를 Feature로 사용
-- **빈집 분석**: 서울시 주택총조사의 실제 미거주 주택(빈집) 수를 별도로 정밀 분석
 
 > 즉, 본 프로젝트가 머신러닝으로 예측하는 대상은 **빈집 수나 공실률이 아니라 다음 달의 임대차 계약 건수**입니다.
 
@@ -228,7 +264,7 @@ DATA/
     ├── app.js                            # 공통 인터랙션 및 알약 내비게이션 모션
     ├── style.css                         # 통일된 디자인 시스템 토큰 및 반응형 CSS
     ├── *-detail.css / *-detail.js        # 페이지별 시각화 모듈
-    ├── assets/                           # 정적 미디어 (home-hero.webp, back.gif 등)
+    ├── assets/                           # 정적 미디어 (000.gif, slides 등)
     └── data/                             # 브라우저용 초경량 JSON 캐시
         ├── market.json                   # 900개 구-월별 관측치
         ├── vacancy.json                  # 75개 구-연도별 빈집 기록
@@ -241,6 +277,17 @@ DATA/
 ## 5. Quick Start (환경 설정 및 실행 순서 8단계)
 
 본 프로젝트는 누구나 로컬 환경에서 재현할 수 있도록 체계적인 파이프라인으로 구성되어 있습니다.
+
+```mermaid
+flowchart LR
+    S1["1️⃣ 가상환경 &amp; 패키지 설치"] --> S2["2️⃣ .env 환경변수 설정"]
+    S2 --> S3["3️⃣ MySQL DB 생성"]
+    S3 --> S4["4️⃣ data/raw/ CSV 배치"]
+    S4 --> S5["5️⃣ 01 파이프라인 실행"]
+    S5 --> S6["6️⃣ 900행 정합성 검증"]
+    S6 --> S7["7️⃣ 02 머신러닝 실행"]
+    S7 --> S8["8️⃣ 로컬 웹 대시보드 구동"]
+```
 
 ### 1단계: 가상환경 생성 및 패키지 설치
 Windows PowerShell 기준:
@@ -261,7 +308,7 @@ DB_USER=root
 DB_PASSWORD=MySQL비밀번호
 DB_NAME=seoul_rent
 ```
-> **보안 주의**: `.env` 파일은 비밀번호가 포함되어 있으므로 절대 GitHub에 커밋하지 않습니다. 템플릿인 `.env.example`만 업로드합니다.
+> ⚠️ **보안 주의**: `.env` 파일은 비밀번호가 포함되어 있으므로 절대 GitHub에 커밋하지 않습니다. 템플릿인 `.env.example`만 업로드합니다.
 
 ### 3단계: MySQL 데이터베이스 생성
 MySQL 콘솔에 접속하여 데이터베이스를 생성합니다:
@@ -299,46 +346,78 @@ python -m http.server 8000 -d docs
 
 ---
 
-## 6. Data Pipeline & Gotchas (전처리 실무 주의사항)
+## 6. Data Pipeline & Architecture (데이터 아키텍처)
 
-실제 이종 공공데이터를 정제하는 과정에서 마주친 실무 이슈들과 이를 해결한 엔지니어링 규칙입니다.
+실제 이종 공공데이터를 정제하고 MySQL 패널 테이블로 결합하여 웹 대시보드까지 전송하는 전체 파이프라인 아키텍처입니다.
 
-```text
-[Public Data Sources]
-   │
-   ├─ 국토부 전월세 실거래 API  (812,501 rows)
-   ├─ KOSIS 인구이동 CSV         (2단 헤더 구조)
-   ├─ 한국은행 기준금리 CSV      (시계열 피벗)
-   ├─ 서울시 생활인구 CSV        (연도별 인코딩·컬럼 불일치)
-   └─ 서울시 빈집 통계 CSV       (주택유형별 집계)
-   │
-   ▼
-[01_data_pipeline_final.ipynb]  ──▶ 수집 · 전처리 · 정합성 검증
-   │
-   ▼
-[MySQL: seoul_rent]
-   ├─ rental_transactions        (812,501 rows)
-   ├─ migration                  (900 rows)
-   ├─ interest_rate              (36 rows)
-   ├─ living_population          (900 rows)
-   └─ ml_rent_market             (900 rows - 통합 패널 테이블)
-   │
-   ├───────────────────────────────┐
-   ▼                               ▼
-[02 Machine Learning]        [03 Vacancy Analysis]
-   │                               │
-   ▼                               ▼
-rent_forecast_2026_01       vacancy_market_analysis
-   (25 rows)                       (75 rows)
-   └───────────────┬───────────────┘
-                   ▼
-       [04_dashboard_data_final.ipynb]
-                   │
-                   ▼
-          docs/data/*.json (경량 정적 캐시)
-                   │
-                   ▼
-       GitHub Pages Web Dashboard
+```mermaid
+flowchart TD
+    subgraph SOURCES ["🌐 5대 원천 공공데이터 수집처"]
+        S1["국토교통부 실거래가 API<br/>(아파트 전월세 812,501건)"]
+        S2["KOSIS 국가통계포털<br/>(국내인구이동통계 CSV)"]
+        S3["서울열린데이터광장<br/>(자치구 생활인구 일별 CSV)"]
+        S4["한국은행 ECOS 통계<br/>(기준금리 시계열 CSV)"]
+        S5["서울시 주택총조사 통계<br/>(자치구별 빈집 현황 CSV)"]
+    end
+
+    subgraph PIPELINE ["⚙️ 01. 수집 &amp; 전처리 파이프라인 (01_data_pipeline_final.ipynb)"]
+        P1["URL 이중인코딩 방지 &amp; XML 파싱"]
+        P2["2단 계층형 멀티헤더 평탄화 (Flatten)"]
+        P3["연도별 인코딩(CP949/UTF-8) &amp; 컬럼명 통일"]
+        P4["시계열 피벗팅 &amp; 결측치 무결성 검증"]
+    end
+
+    subgraph DB ["🗄️ MySQL 정형 데이터베이스 (seoul_rent)"]
+        D1[("rental_transactions<br/>(812,501행)")]
+        D2[("migration<br/>(900행)")]
+        D3[("living_population<br/>(900행)")]
+        D4[("interest_rate<br/>(36행)")]
+        D5[("ml_rent_market<br/>(통합 패널 900행 = 25구 × 36개월)")]
+    end
+
+    subgraph ANALYTICS ["🤖 02 &amp; 03. 분석 및 머신러닝 파이프라인"]
+        M1["02. 시계열 학습/검증 분할<br/>(Train 600행 / Test 275행)"]
+        M2["Random Forest 회귀 앙상블<br/>(R² 0.8892 / MAE 106.71)"]
+        M3["2026-01 거래 예측<br/>(25개 자치구)"]
+        M4["03. 빈집-시장 상관관계 &amp; 주택유형 분석<br/>(75행 패널)"]
+    end
+
+    subgraph EXPORT ["📦 04. 경량 JSON 데이터 추출 (04_dashboard_data_final.ipynb)"]
+        E1["docs/data/market.json (900행)"]
+        E2["docs/data/forecast.json (25행)"]
+        E3["docs/data/vacancy.json (75행)"]
+        E4["docs/data/summary.json (요약)"]
+    end
+
+    subgraph WEB ["💻 GitHub Pages 웹 대시보드 (docs/)"]
+        W1["index.html (메인 스토리)"]
+        W2["market.html (임대차 시장)"]
+        W3["population.html (인구 이동)"]
+        W4["vacancy.html (빈집 현황)"]
+        W5["forecast.html (2026 AI 예측)"]
+        W6["district.html (우리동네 탐색기)"]
+    end
+
+    S1 --> P1
+    S2 --> P2
+    S3 --> P3
+    S4 & S5 --> P4
+
+    P1 --> D1
+    P2 --> D2
+    P3 --> D3
+    P4 --> D4
+    D1 & D2 & D3 & D4 --> D5
+
+    D5 --> M1 --> M2 --> M3
+    D5 & S5 --> M4
+
+    M3 --> E2
+    D5 --> E1
+    M4 --> E3
+    D5 --> E4
+
+    E1 & E2 & E3 & E4 --> W1 & W2 & W3 & W4 & W5 & W6
 ```
 
 ### 6.1 국토교통부 임대차 실거래가 (MOLIT API)
@@ -383,29 +462,35 @@ MySQL seoul_rent 저장 완료: 900건
 
 서울시 주택총조사의 실제 미거주 주택(빈집) 통계 75건(25개 구 × 3개년)을 분석했습니다.
 
-### 연도별 서울 전체 빈집 추이
-- **2023년**: 107,681호
-- **2024년**: 102,556호
-- **2025년**: **126,290호 (전년 대비 +23.1% 증가 🔺)**
+### 📈 연도별 서울 전체 빈집 추이
 
-### 2025년 주택 유형별 빈집 분포
-1. **아파트**: **68,430호 (54.2%)** ➡️ 전체 빈집의 절반 이상이 아파트
-2. **다세대·빌라**: **35,120호 (27.8%)** ➡️ 아파트 + 다세대가 82.0% 차지
-3. **단독주택**: **14,210호 (11.3%)**
-4. **연립주택 등 기타**: **8,530호 (6.7%)**
+```text
+2023년 : 107,681호  █████████████████████░░░░
+2024년 : 102,556호  ████████████████████░░░░░ (-4.8%)
+2025년 : 126,290호  █████████████████████████ (+23.1% 🔺 급증)
+```
 
-### 빈집 수와 주요 시장 변수의 상관관계
+### 🏘️ 2025년 주택 유형별 빈집 분포
 
-| 비교 변수 | 빈집 수와의 통계적 상관계수 (Correlation) | 해석 |
-| :--- | :---: | :--- |
-| **임대차 거래 건수** | **+0.686** | 거래가 활발하고 주택 규모가 큰 동네일수록 빈집 절대 수도 큼 |
-| **월평균 생활인구** | **+0.592** | 활동 인구가 많은 핵심 도심일수록 주택 재고와 빈집 수 공존 |
-| **전출 인구** | **+0.445** | 인구 이동 규모와의 뚜렷한 동행 관계 |
-| **전입 인구** | **+0.440** | 전출뿐만 아니라 전입 역시 비슷한 상관성을 보임 |
-| **순이동 (`전입 - 전출`)**| **+0.090** | 단순 순이동 수치와 빈집 절대 수의 연관성은 매우 낮음 |
-| **한국은행 기준금리** | **-0.143** | 거시 금리와 빈집 절대량 사이에는 미세한 음(-)의 관계 |
+```text
+1. 아파트       : 68,430호 (54.2%)  ███████████░░░░░░░░░ (과반수 초과)
+2. 다세대·빌라  : 35,120호 (27.8%)  ██████░░░░░░░░░░░░░░ (아파트+다세대 = 82.0%)
+3. 단독주택     : 14,210호 (11.3%)  ██░░░░░░░░░░░░░░░░░░
+4. 연립·기타    :  8,530호 ( 6.7%)  █░░░░░░░░░░░░░░░░░░░
+```
 
-> **해석 주의**: 상관관계는 원인과 결과를 뜻하지 않습니다. 자치구별 총 주택 수(분모)가 반영되지 않은 '절대 빈집 수'이므로, 주택 재고가 큰 대형 자치구(강남, 송파, 강서 등)가 높은 수치를 나타냅니다.
+### 🔗 빈집 수와 주요 시장 변수의 상관관계
+
+| 비교 변수 | 상관계수 (r) | 시각적 강도 (Visual Correlation) | 해석 |
+| :--- | :---: | :--- | :--- |
+| **임대차 거래 건수** | **+0.686** | `██████████████` (+0.69) | 거래가 활발하고 주택 규모가 큰 동네일수록 빈집 절대 수도 큼 |
+| **월평균 생활인구** | **+0.592** | `████████████░░` (+0.59) | 활동 인구가 많은 핵심 도심일수록 주택 재고와 빈집 수 공존 |
+| **전출 인구** | **+0.445** | `█████████░░░░░` (+0.45) | 인구 이동 규모와의 뚜렷한 동행 관계 |
+| **전입 인구** | **+0.440** | `█████████░░░░░` (+0.44) | 전출뿐만 아니라 전입 역시 비슷한 상관성을 보임 |
+| **순이동 (`전입 - 전출`)**| **+0.090** | `██░░░░░░░░░░░░` (+0.09) | 단순 순이동 수치와 빈집 절대 수의 연관성은 매우 낮음 |
+| **한국은행 기준금리** | **-0.143** | `▒▒░░░░░░░░░░░░` (-0.14) | 거시 금리와 빈집 절대량 사이에는 미세한 음(-)의 관계 |
+
+> ⚠️ **해석 주의**: 상관관계는 원인과 결과를 뜻하지 않습니다. 자치구별 총 주택 수(분모)가 반영되지 않은 '절대 빈집 수'이므로, 주택 재고가 큰 대형 자치구(강남, 송파, 강서 등)가 높은 수치를 나타냅니다.
 
 ---
 
@@ -427,17 +512,31 @@ df["nextContractCount"] = df.groupby("guName")["contractCount"].shift(-1)
 시계열 데이터에서 과거와 미래를 무작위로 섞어서 검증하면 미래 시험 정답을 보고 과거를 맞히는 **데이터 누수(Data Leakage)**가 발생합니다.  
 이를 완벽히 차단하기 위해 철저한 시간 기준 분할을 적용했습니다:
 
-```text
-[ 2023.01 ~ 2024.12 학습용 Train 데이터 (600행) ] │ [ 2025.01 ~ 2025.12 실전 검증 Test 데이터 (275행) ]
+```mermaid
+flowchart LR
+    subgraph TRAIN ["📘 학습 데이터셋 (Train Set: 600행)"]
+        T1["2023.01 ~ 2024.12 (24개월)<br/>25개 자치구 × 24 = 600행"]
+    end
+
+    subgraph TEST ["📙 실전 검증 데이터셋 (Test Set: 275행)"]
+        TE1["2025.01 ~ 2025.11 (11개월 실측 라벨)<br/>25개 자치구 × 11 = 275행"]
+    end
+
+    subgraph INFERENCE ["🔮 실전 2026.01 예측 (Inference: 25행)"]
+        IN1["2025.12 최신 관측 지표 입력<br/>⬇️<br/><b>2026.01 자치구별 계약 건수 산출</b>"]
+    end
+
+    TRAIN -->|"시간순 학습 (과거 지표 습득)"| TEST
+    TEST -->|"검증 완료 (R² 0.8892)"| INFERENCE
 ```
 
 ### 8.3 모델 성능 대결 (2025년 실전 검증 결과)
 
-| 모델 알고리즘 | 평균 오차(MAE, 건) ↓ | 제곱평균오차(RMSE, 건) ↓ | 결정계수(R², 정확도) ↑ | 평가 |
-| :--- | :---: | :---: | :---: | :--- |
-| **기준 모델 (Persistence Baseline)** | 115.74 | 196.67 | 0.8672 | "지난달과 같을 것이다" 단순 가정 |
-| **선형 회귀 (Linear Regression)** | 113.98 | 192.56 | 0.8727 | 다중공선성 고려 `netMove` 제외 |
-| **랜덤 포레스트 (Random Forest)** | **106.71** | **179.61** | **0.8892** | **🏆 최종 모델 선정 (오차 8% 감소)** |
+| 모델 알고리즘 | 평균 오차 (MAE) ↓ | 제곱평균오차 (RMSE) ↓ | 설명력 (R²) ↑ | 성능 인포그래픽 바 | 평가 및 특징 |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| **기준 모델 (Persistence Baseline)** | 115.74건 | 196.67건 | 0.8672 | `██████████████░` (0.867) | "지난달과 같을 것이다" 단순 가정 |
+| **선형 회귀 (Linear Regression)** | 113.98건 | 192.56건 | 0.8727 | `██████████████▒` (0.873) | 다중공선성 고려 `netMove` 제외 |
+| **랜덤 포레스트 (Random Forest)** | **106.71건** | **179.61건** | **0.8892** | `███████████████` (0.889) 🏆 | **최종 선정 모델 (오차 8% 추가 개선)** |
 
 > Random Forest 모델이 비선형 패턴과 복합적인 상호작용을 가장 정밀하게 파악하여 **한 달 평균 오차 106.7건, 설명력 88.9%**로 가장 우수한 성적을 기록했습니다.
 
@@ -448,7 +547,17 @@ df["nextContractCount"] = df.groupby("guName")["contractCount"].shift(-1)
 
 ### 8.4 변수 중요도 (Feature Importance)
 
-| 입력 변수 (Feature) | 중요도 기여율 (Importance) | 의미 해석 |
+```text
+1. contractCount (직전 월 거래량) : 67.72%  ████████████████████████████████
+2. avgLivingPop  (월평균 생활인구) : 25.50%  ████████████
+3. moveIn        (월간 전입 인구) :  1.85%  █
+4. moveOut       (월간 전출 인구) :  1.80%  █
+5. netMove       (월간 순이동 인구): 1.62%  █
+6. month         (계절성 기준 월) :  1.36%  █
+7. baseRate      (한국은행 기준금리): 0.15%  ░
+```
+
+| 입력 변수 (Feature) | 중요도 기여율 | 의미 해석 |
 | :--- | :---: | :--- |
 | **`contractCount`** (직전 월 거래량) | **67.72%** | 부동산 시장의 강한 관성(지난달 거래 수준이 다음 달로 강력히 이어짐) |
 | **`avgLivingPop`** (월평균 생활인구) | **25.50%** | 주민등록 인구보다 실제 거리를 오가는 활동 인구가 수요의 핵심 지표 |
@@ -465,16 +574,16 @@ df["nextContractCount"] = df.groupby("guName")["contractCount"].shift(-1)
 2025년 검증을 성공적으로 마친 후, 2023년 1월부터 2025년 11월까지의 전체 875개 라벨 데이터로 Random Forest를 재학습시켰습니다.  
 그리고 **2025년 12월의 최신 지표들을 입력하여 2026년 1월 자치구별 아파트 임대차 거래 건수**를 최종 산출했습니다.
 
-### 대표 자치구 예측 결과 (2025.12 실제 ➡️ 2026.01 예측)
+### 🎯 주요 대표 자치구 예측 결과 (2025.12 실제 ➡️ 2026.01 AI 예측)
 
-| 자치구 | 2025년 12월 실제 거래 | 2026년 1월 AI 예측치 | 변화율 | 지역 특성 및 예측 배경 |
-| :--- | :---: | :---: | :---: | :--- |
-| **강남구** | 2,798건 | **2,685건** | -4.0% | 연말 거래 급증세 이후 소폭의 숨고르기 안정세 |
-| **송파구** | 2,770건 | **2,257건** | -18.5% | 대단지 아파트 밀집 지역으로 겨울철 비수기 진입 |
-| **노원구** | 1,549건 | **1,566건** | +1.1% | 중계동 등 전통 학군 수요로 견고한 거래 유지 |
-| **서초구** | 1,520건 | **1,488건** | -2.1% | 핵심 상급지 거래 흐름의 안정적 유지 |
-| **강서구** | 1,311건 | **1,326건** | +1.1% | 마곡 배후 주거지 중심의 꾸준한 임대차 수요 |
-| **서대문구** | 829건 | **1,062건** | **+28.1% 🔺**| **신촌 대학가 신학기 진입에 따른 청년 임대차 수요 폭증** |
+| 자치구 | 2025년 12월 실제 거래 | 2026년 1월 AI 예측치 | 변화율 | 동향 인포그래픽 | 지역 특성 및 예측 배경 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **강남구** | 2,798건 | **2,685건** | -4.0% | 🔻 소폭 안정 | 연말 거래 급증세 이후 소폭의 숨고르기 안정세 |
+| **송파구** | 2,770건 | **2,257건** | -18.5% | 🔻 계절 감소 | 대단지 아파트 밀집 지역으로 겨울철 비수기 진입 |
+| **노원구** | 1,549건 | **1,566건** | +1.1% | ➡️ 보합 유지 | 중계동 등 전통 학군 수요로 견고한 거래 유지 |
+| **서초구** | 1,520건 | **1,488건** | -2.1% | ➡️ 견고 유지 | 핵심 상급지 거래 흐름의 안정적 유지 |
+| **강서구** | 1,311건 | **1,326건** | +1.1% | ➡️ 보합 유지 | 마곡 배후 주거지 중심의 꾸준한 임대차 수요 |
+| **서대문구** | 829건 | **1,062건** | **+28.1%** | 🔺 **수요 폭증** | **신촌 대학가 신학기 진입에 따른 청년 임대차 수요 폭증** |
 
 > 25개 전체 자치구의 정밀 예측 데이터는 `docs/data/forecast.json` 및 웹 대시보드에서 전수 열람하실 수 있습니다.
 
@@ -484,17 +593,38 @@ df["nextContractCount"] = df.groupby("guName")["contractCount"].shift(-1)
 
 분석 결과를 브라우저에서 누구나 직관적으로 탐색할 수 있도록 GitHub Pages 기반의 반응형 인터랙티브 웹 대시보드로 배포했습니다.
 
-<p align="center">
-  <img src="docs/assets/images/forecast-hero.webp" alt="2026 AI 예측 대시보드" width="760">
-</p>
+```mermaid
+flowchart TD
+    subgraph WEB_APP ["🌐 Seoul Housing Interactive Dashboard (docs/)"]
+        MAIN["index.html<br/>(메인 개요 &amp; 핵심 신호)"]
+        
+        M_PAGE["market.html<br/>(임대차 시장 추이)"]
+        P_PAGE["population.html<br/>(인구이동 &amp; 생활인구)"]
+        V_PAGE["vacancy.html<br/>(빈집 &amp; 주택유형)"]
+        F_PAGE["forecast.html<br/>(2026 AI 예측 순위)"]
+        D_PAGE["district.html<br/>(우리동네 원스톱 탐색)"]
+    end
 
-### 서브 페이지 구성
-1. **`index.html` (메인 개요)**: 3개년 81만 건 프로젝트의 기획 의도와 4가지 핵심 신호 소개
-2. **`vacancy.html` (빈집 현황)**: 연도별 빈집 추이, 자치구별 순위, 아파트·빌라 등 주택유형별 분포
-3. **`market.html` (임대차 시장)**: 자치구별 월별 계약 건수 인터랙티브 꺾은선 차트 및 상세 필터 검색
-4. **`population.html` (인구 이동)**: 자치구별 전입·전출 듀얼 라인 차트 및 생활인구 비교 분석
-5. **`forecast.html` (2026 AI 예측)**: 2025년 12월 실제값과 2026년 1월 AI 예측값의 25개 구 정밀 비교
-6. **`district.html` (우리 동네 탐색기)**: 지도에서 자치구를 클릭하면 거래·인구·빈집·예측을 한 화면에 표시
+    subgraph CACHE ["⚡ 브라우저 경량 정적 JSON 캐시"]
+        C1[("market.json<br/>(900개 구·월별)")]
+        C2[("vacancy.json<br/>(75개 구·연도별)")]
+        C3[("forecast.json<br/>(25개 구 AI 예측)")]
+        C4[("summary.json<br/>(상단 집계 카드)")]
+    end
+
+    MAIN <--> M_PAGE & P_PAGE & V_PAGE & F_PAGE & D_PAGE
+    CACHE -.-> M_PAGE & P_PAGE & V_PAGE & F_PAGE & D_PAGE
+```
+
+### 🖼️ 6개 서브페이지 인터랙티브 화면 구성
+
+| 01. 메인 대시보드 개요 (`index.html`) | 02. 임대차 거래 시장 추이 (`market.html`) |
+| :---: | :---: |
+| <img src="docs/assets/slides/000.gif" width="100%" alt="index.html"> | <img src="docs/assets/images/market-hero.webp" width="100%" alt="market.html"> |
+| **03. 인구 이동 & 생활인구 (`population.html`)** | **04. 빈집 및 주택유형 분석 (`vacancy.html`)** |
+| <img src="docs/assets/images/population-hero.webp" width="100%" alt="population.html"> | <img src="docs/assets/images/vacancy-hero.webp" width="100%" alt="vacancy.html"> |
+| **05. 2026 AI 거래 예측 순위 (`forecast.html`)** | **06. 25개 자치구 원스톱 지도 (`district.html`)** |
+| <img src="docs/assets/images/forecast-hero.webp" width="100%" alt="forecast.html"> | <img src="docs/assets/images/district-hero.webp" width="100%" alt="district.html"> |
 
 ### 프론트엔드 핵심 인터랙션 기술
 - **페이지 간 슬라이딩 알약 내비게이션 (`.pill-nav`)**: `sessionStorage`를 이용해 이전 페이지 클릭 위치를 기억하고, 새 페이지 로드 시 파란 인디케이터가 스르륵 미끄러져 들어오는 부드러운 앱 감성 연출
@@ -571,16 +701,16 @@ KOSIS 인구이동 CSV 파일의 멀티 헤더 구조를 확인합니다. `heade
 
 ## 15. Tech Stack (기술 스택)
 
-| 분류 | 사용 기술 | 상세 용도 |
-| :--- | :--- | :--- |
-| **언어** | Python 3.10+, JavaScript (ES6+) | 데이터 엔지니어링, 모델링, 웹 프론트엔드 |
-| **데이터 정제** | pandas, NumPy | 81만 건 결측치 처리, 인코딩 변환, 패널 데이터 결합 |
-| **API 통신** | requests, xml.etree.ElementTree | 국토교통부 실거래가 XML API 수집 및 파싱 |
-| **데이터베이스** | MySQL 8.0, SQLAlchemy, PyMySQL | 중앙 정형 데이터베이스 스키마 설계 및 무결성 검증 |
-| **머신러닝** | scikit-learn | 시간순 분할(Time-based), Random Forest, 선형 회귀 |
-| **데이터 시각화** | Matplotlib, Seaborn | 탐색적 데이터 분석(EDA), 상관관계 히트맵, 잔차 분석 |
-| **웹 대시보드** | HTML5, CSS3 (Vanilla), Vanilla JS | 6개 서브페이지 인터랙티브 웹, 반응형 모바일 UI |
-| **배포 및 인프라** | GitHub Pages, Git | 정적 웹 호스팅 서비스 및 버전 관리 |
+| 분류 | 기술 배지 | 사용 기술 | 상세 용도 |
+| :--- | :---: | :--- | :--- |
+| **언어** | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![JS](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) | Python 3.10+, JavaScript (ES6+) | 데이터 엔지니어링, 모델링, 웹 프론트엔드 |
+| **데이터 정제** | ![Pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white) | pandas, NumPy | 81만 건 결측치 처리, 인코딩 변환, 패널 데이터 결합 |
+| **API 통신** | ![Requests](https://img.shields.io/badge/Requests-2CA5E0?logo=python&logoColor=white) | requests, xml.etree.ElementTree | 국토교통부 실거래가 XML API 수집 및 파싱 |
+| **데이터베이스** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) | MySQL 8.0, SQLAlchemy, PyMySQL | 중앙 정형 데이터베이스 스키마 설계 및 무결성 검증 |
+| **머신러닝** | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikit-learn&logoColor=white) | scikit-learn | 시간순 분할(Time-based), Random Forest, 선형 회귀 |
+| **데이터 시각화** | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?logo=python&logoColor=white) | Matplotlib, Seaborn | 탐색적 데이터 분석(EDA), 상관관계 히트맵, 잔차 분석 |
+| **웹 대시보드** | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white) | HTML5, Vanilla CSS, Vanilla JS | 6개 서브페이지 인터랙티브 웹, 반응형 모바일 UI |
+| **배포 및 인프라** | ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?logo=githubpages&logoColor=white) | GitHub Pages, Git | 정적 웹 호스팅 서비스 및 버전 관리 |
 
 ---
 
